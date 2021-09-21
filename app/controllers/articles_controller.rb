@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: %i[ show edit update destroy ]
-  before_action :require_user, except: %i[ index show ]
+  before_action :require_user, except: %i[ index show search ]
   before_action :require_same_user, only: %i[ edit update destroy ]
 
   def index
@@ -45,6 +45,12 @@ class ArticlesController < ApplicationController
       format.html { redirect_to articles_url, notice: "Article was successfully destroyed." }
       format.json { head :no_content }
     end
+  end
+
+  def search
+    key = "%#{params[:query]}%"
+    @articles = Article.where("title LIKE ? OR description LIKE ?", key, key).paginate(page: params[:page], per_page: 5)
+    render "index"
   end
 
   private
