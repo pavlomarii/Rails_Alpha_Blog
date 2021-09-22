@@ -1,24 +1,40 @@
-# README
+## Rails Alpha Blog
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+##### Prerequisites
 
-Things you may want to cover:
+The setups steps expect following tools installed on the system.
 
-* Ruby version
+- Ruby 3.0.2
+- Rails 6.1.4.1
+- PostgreSQL 12.8
 
-* System dependencies
+##### 1. Check out the repository
 
-* Configuration
+```bash
+git clone https://github.com/pavlomarii/Rails_Alpha_Blog.git
+```
 
-* Database creation
+##### 2. Install dependencies
 
-* Database initialization
+```bash
+yarn install
+bundle install
+```
 
-* How to run the test suite
+##### 3. Setup the local database
 
-* Services (job queues, cache servers, search engines, etc.)
+Run the following commands to create and setup the database.
 
-* Deployment instructions
+```bash
+rails db:migrate
+```
 
-* ...
+##### 4. Start the Rails server
+
+You can start the rails server using the command given below.
+
+```bash
+rails s
+```
+
+And now you can visit the site with the URL http://localhost:3000
